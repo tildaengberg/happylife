@@ -1,6 +1,7 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 from sklearn import preprocessing
+import numpy as np
 
 # read files
 data_2015 = pd.read_csv('data/2015.csv')
@@ -60,5 +61,30 @@ names = ['economy', 'health', 'freedom', 'generosity', 'corruption']
 values = [economy_mean_2019, health_mean_2019, freedom_mean_2019,
           generosity_mean_2019, corruption_mean_2019]
 
-plt.bar(names, values)
+fig1, ax1 = plt.subplots()
+ax1.bar(names, values)
+
+print(data_2019["Score"].head)
+
+# Plot original dataset
+fig2, ax2 = plt.subplots()
+
+economy_plot = ax2.scatter(
+    data_2019["Economy"], data_2019["Score"], c='#83B692')
+health_plot = ax2.scatter(
+    data_2019["Health"], data_2019["Score"], c='#F9ADA0')
+freedom_plot = ax2.scatter(
+    data_2019["Freedom"], data_2019["Score"], c='#F9627D')
+generosity_plot = ax2.scatter(
+    data_2019["Generosity"], data_2019["Score"], c='#C65B7C')
+corruption_plot = ax2.scatter(
+    data_2019["Corruption"], data_2019["Score"], c='#5B3758')
+
+ax2.set_xlabel(
+    "The extent to which the factor contributes to the happines score")
+ax2.set_ylabel("Happiness score")
+ax2.legend((economy_plot, health_plot, freedom_plot, generosity_plot,
+           corruption_plot), ('Economy', 'Health', 'Freedom', 'Generosity', 'Corruption'))
+ax2.set_title("Original dataset")
+
 plt.show()
