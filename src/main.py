@@ -57,12 +57,20 @@ freedom_mean_2019 = data_2019["Freedom"].mean()
 generosity_mean_2019 = data_2019["Generosity"].mean()
 corruption_mean_2019 = data_2019["Corruption"].mean()
 
-names = ['economy', 'health', 'freedom', 'generosity', 'corruption']
+names = ['Economy', 'Health', 'Freedom', 'Generosity', 'Corruption']
 values = [economy_mean_2019, health_mean_2019, freedom_mean_2019,
           generosity_mean_2019, corruption_mean_2019]
 
 fig1, ax1 = plt.subplots()
-ax1.bar(names, values)
+barlist = ax1.bar(names, values)
+barlist[0].set_color('#83B692')
+barlist[1].set_color('#F9ADA0')
+barlist[2].set_color('#F9627D')
+barlist[3].set_color('#C65B7C')
+barlist[4].set_color('#5B3758')
+ax1.set_ylabel('Happiness score')
+ax1.set_xlabel('Factors')
+ax1.set_title("Happiness bar plot plot 2019")
 
 print(data_2019["Score"].head)
 
@@ -85,6 +93,6 @@ ax2.set_xlabel(
 ax2.set_ylabel("Happiness score")
 ax2.legend((economy_plot, health_plot, freedom_plot, generosity_plot,
            corruption_plot), ('Economy', 'Health', 'Freedom', 'Generosity', 'Corruption'))
-ax2.set_title("Original dataset")
+ax2.set_title("Happiness scatter plot 2019")
 
 plt.show()
