@@ -72,4 +72,25 @@ ax1.set_title("Happiness bar plot plot 2019")
 
 print(data_2019["Score"].head)
 
+# Scatter plot
+fig2, ax2 = plt.subplots()
+
+economy_plot = ax2.scatter(
+    data_2019["Economy"], data_2019["Score"], c='#83B692')
+health_plot = ax2.scatter(
+    data_2019["Health"], data_2019["Score"], c='#F9ADA0')
+freedom_plot = ax2.scatter(
+    data_2019["Freedom"], data_2019["Score"], c='#F9627D')
+generosity_plot = ax2.scatter(
+    data_2019["Generosity"], data_2019["Score"], c='#C65B7C')
+corruption_plot = ax2.scatter(
+    data_2019["Corruption"], data_2019["Score"], c='#5B3758')
+
+ax2.set_xlabel(
+    "The extent to which the factor contributes to the happines score")
+ax2.set_ylabel("Happiness score")
+ax2.legend((economy_plot, health_plot, freedom_plot, generosity_plot,
+           corruption_plot), ('Economy', 'Health', 'Freedom', 'Generosity', 'Corruption'))
+ax2.set_title("Happiness scatter plot 2019")
+
 plt.show()
