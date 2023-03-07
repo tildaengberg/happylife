@@ -47,3 +47,29 @@ data_2016 = data_2016.reindex(columns=column_titles)
 data_2017 = data_2017.reindex(columns=column_titles)
 data_2018 = data_2018.reindex(columns=column_titles)
 data_2019 = data_2019.reindex(columns=column_titles)
+
+# plot bar graph
+economy_mean_2019 = data_2019["Economy"].mean()
+health_mean_2019 = data_2019["Health"].mean()
+freedom_mean_2019 = data_2019["Freedom"].mean()
+generosity_mean_2019 = data_2019["Generosity"].mean()
+corruption_mean_2019 = data_2019["Corruption"].mean()
+
+names = ['Economy', 'Health', 'Freedom', 'Generosity', 'Corruption']
+values = [economy_mean_2019, health_mean_2019, freedom_mean_2019,
+          generosity_mean_2019, corruption_mean_2019]
+
+fig1, ax1 = plt.subplots()
+barlist = ax1.bar(names, values)
+barlist[0].set_color('#83B692')
+barlist[1].set_color('#F9ADA0')
+barlist[2].set_color('#F9627D')
+barlist[3].set_color('#C65B7C')
+barlist[4].set_color('#5B3758')
+ax1.set_ylabel('Happiness score')
+ax1.set_xlabel('Factors')
+ax1.set_title("Happiness bar plot plot 2019")
+
+print(data_2019["Score"].head)
+
+plt.show()
