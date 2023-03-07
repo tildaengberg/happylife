@@ -1,6 +1,5 @@
 import pandas as pd
 import matplotlib.pyplot as plt
-import seaborn as sns
 from sklearn import preprocessing
 import numpy as np
 
@@ -49,28 +48,65 @@ data_2017 = data_2017.reindex(columns=column_titles)
 data_2018 = data_2018.reindex(columns=column_titles)
 data_2019 = data_2019.reindex(columns=column_titles)
 
-# Preprocess data for heatmap
-data_2019.set_index('Country', inplace=True)
-columns_of_interest = ['Economy', 'Health', 'Freedom', 'Generosity', 'Corruption']
-data_2019 = data_2019[columns_of_interest]
+# Get the average of each year
+average_economy_2015 = data_2015["Economy"].mean()
+average_economy_2016 = data_2016["Economy"].mean()
+average_economy_2017 = data_2017["Economy"].mean()
+average_economy_2018 = data_2018["Economy"].mean()
+average_economy_2019 = data_2019["Economy"].mean()
 
-# Heatmap for all countries
-fig1 = plt.figure()
-sns.heatmap(data_2019, cmap="YlGnBu")
-plt.title("The impact of the factors")
+average_health_2015 = data_2015["Health"].mean()
+average_health_2016 = data_2016["Health"].mean()
+average_health_2017 = data_2017["Health"].mean()
+average_health_2018 = data_2018["Health"].mean()
+average_health_2019 = data_2019["Health"].mean()
 
-# Heatmap for countries with low economy impact
-data_2019_sorted = data_2019.sort_values(by='Economy', ascending=True)
-data_2019_low_economy = data_2019_sorted.head(15)
-fig2 = plt.figure()
-sns.heatmap(data_2019_low_economy, cmap="YlGnBu")
-plt.title("Countries with lowest economy impact")
+average_freedom_2015 = data_2015["Freedom"].mean()
+average_freedom_2016 = data_2016["Freedom"].mean()
+average_freedom_2017 = data_2017["Freedom"].mean()
+average_freedom_2018 = data_2018["Freedom"].mean()
+average_freedom_2019 = data_2019["Freedom"].mean()
 
-# Barchart for Scandinavia
-data_2019_scandinavia = data_2019.loc[['Sweden', 'Norway', 'Finland', 'Denmark', 'Iceland']]
-data_2019_scandinavia = data_2019_scandinavia.transpose()
-colors = ['#83B692', '#F9ADA0', '#F9627D', '#C65B7C', '#5B3758']
-ax = data_2019_scandinavia.plot(kind='bar', rot=0, color=colors)
-ax.set_title('The impact of the factors in Scandinavia')
+average_generosity_2015 = data_2015["Generosity"].mean()
+average_generosity_2016 = data_2016["Generosity"].mean()
+average_generosity_2017 = data_2017["Generosity"].mean()
+average_generosity_2018 = data_2018["Generosity"].mean()
+average_generosity_2019 = data_2019["Generosity"].mean()
+
+average_corruption_2015 = data_2015["Corruption"].mean()
+average_corruption_2016 = data_2016["Corruption"].mean()
+average_corruption_2017 = data_2017["Corruption"].mean()
+average_corruption_2018 = data_2018["Corruption"].mean()
+average_corruption_2019 = data_2019["Corruption"].mean()
+
+# Plot the graphs in the same window
+figure, axis = plt.subplots(2, 3)
+figure.tight_layout(pad=2.0)
+X = [2015, 2016, 2017, 2018, 2019]
+
+Y1 = [average_economy_2015, average_economy_2016, average_economy_2017, average_economy_2018, average_economy_2019]
+axis[0, 0].plot(X, Y1)
+axis[0, 0].set_title("Economy")
+axis[0, 0].set_ylim([0, 1])
+
+Y2 = [average_health_2015, average_health_2016, average_health_2017, average_health_2018, average_health_2019]
+axis[0, 1].plot(X, Y2)
+axis[0, 1].set_title("Health")
+axis[0, 1].set_ylim([0, 1])
+
+Y3 = [average_freedom_2015, average_freedom_2016, average_freedom_2017, average_freedom_2018, average_freedom_2019]
+axis[0, 2].plot(X, Y3)
+axis[0, 2].set_title("Freedom")
+axis[0, 2].set_ylim([0, 1])
+
+Y4 = [average_generosity_2015, average_generosity_2016, average_generosity_2017, average_generosity_2018, average_generosity_2019]
+axis[1, 0].plot(X, Y4)
+axis[1, 0].set_title("Generosity")
+axis[1, 0].set_ylim([0, 1])
+
+Y5 = [average_corruption_2015, average_corruption_2016, average_corruption_2017, average_corruption_2018, average_corruption_2019]
+axis[1, 1].plot(X, Y5)
+axis[1, 1].set_title("Corruption")
+axis[1, 1].set_ylim([0, 1])
 
 plt.show()

@@ -1,5 +1,6 @@
 import pandas as pd
 import matplotlib.pyplot as plt
+import seaborn as sns
 from sklearn import preprocessing
 import numpy as np
 
@@ -47,3 +48,29 @@ data_2016 = data_2016.reindex(columns=column_titles)
 data_2017 = data_2017.reindex(columns=column_titles)
 data_2018 = data_2018.reindex(columns=column_titles)
 data_2019 = data_2019.reindex(columns=column_titles)
+
+# Preprocess data for heatmap
+data_2019.set_index('Country', inplace=True)
+columns_of_interest = ['Economy', 'Health', 'Freedom', 'Generosity', 'Corruption']
+data_2019 = data_2019[columns_of_interest]
+
+# Heatmap for all countries
+fig1 = plt.figure()
+sns.heatmap(data_2019, cmap="YlGnBu")
+plt.title("The impact of the factors")
+
+# Heatmap for countries with low economy impact
+data_2019_sorted = data_2019.sort_values(by='Economy', ascending=True)
+data_2019_low_economy = data_2019_sorted.head(15)
+fig2 = plt.figure()
+sns.heatmap(data_2019_low_economy, cmap="YlGnBu")
+plt.title("Countries with lowest economy impact")
+
+# Barchart for Scandinavia
+data_2019_scandinavia = data_2019.loc[['Sweden', 'Norway', 'Finland', 'Denmark', 'Iceland']]
+data_2019_scandinavia = data_2019_scandinavia.transpose()
+colors = ['#83B692', '#F9ADA0', '#F9627D', '#C65B7C', '#5B3758']
+ax = data_2019_scandinavia.plot(kind='bar', rot=0, color=colors)
+ax.set_title('The impact of the factors in Scandinavia')
+
+plt.show()
