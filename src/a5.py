@@ -51,6 +51,21 @@ data_2017 = data_2017.reindex(columns=column_titles)
 data_2018 = data_2018.reindex(columns=column_titles)
 data_2019 = data_2019.reindex(columns=column_titles)
 
+# modify data to find max values for each row in dataset
+mod_2019 = data_2019.drop(["Rank", "Score", "Country"], axis=1)
+
+# find max values
+max_values = mod_2019.max(axis=1)
+
+# find the corresponding factors to each countries
+factors = mod_2019.idxmax(axis=1)
+
+# create new dataframe with country, max value and factor
+df = pd.DataFrame({'Country': data_2019["Country"],
+                   'Max value': max_values,
+                   'Factor': factors
+                   })
+
 # read geojson file
 gdf_original = gpd.read_file('data/countries.geojson')
 
@@ -59,9 +74,14 @@ gdf = gdf_original.rename(
     columns={'ADMIN': 'Country'})
 
 # merge the two datasets where the countries match
-merged_df = gdf.merge(data_2019, on="Country")
+merged_df = gdf.merge(df, on="Country")
 
 # plot the world map
 fig = px.choropleth(merged_df, geojson=merged_df.geometry,
-                    locations=merged_df.index, color="Score", projection="natural earth", hover_name="Country")
+                    locations=merged_df.index, color="Factor", projection="natural earth", hover_name="Country",
+                    title="Most important factor for happiness",
+                    color_discrete_map={'Health': '#83B692',
+                                        'Economy': '#F9627D',
+                                        'Generosity': '#F9ADA0',
+                                        'Freedom': '#5B3758'})
 fig.show()
