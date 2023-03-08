@@ -77,8 +77,12 @@ gdf = gdf_original.rename(
 merged_df = gdf.merge(df, on="Country")
 
 # plot the world map
-fig = px.choropleth(merged_df, geojson=merged_df.geometry,
-                    locations=merged_df.index, color="Factor", projection="natural earth", hover_name="Country",
+fig = px.choropleth(merged_df,
+                    geojson=merged_df.geometry,
+                    locations=merged_df.index,
+                    color="Factor",
+                    projection="natural earth",
+                    hover_name="Country",
                     title="Most important factor for happiness",
                     color_discrete_map={'Health': '#83B692',
                                         'Economy': '#F9627D',

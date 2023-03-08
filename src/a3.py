@@ -51,6 +51,10 @@ data_2017 = data_2017.reindex(columns=column_titles)
 data_2018 = data_2018.reindex(columns=column_titles)
 data_2019 = data_2019.reindex(columns=column_titles)
 
+df = pd.DataFrame({'Country': data_2019["Country"],
+                   'Score': data_2019["Score"],
+                   })
+
 # read geojson file
 gdf_original = gpd.read_file('data/countries.geojson')
 
@@ -59,9 +63,15 @@ gdf = gdf_original.rename(
     columns={'ADMIN': 'Country'})
 
 # merge the two datasets where the countries match
-merged_df = gdf.merge(data_2019, on="Country")
+merged_df = gdf.merge(df, on="Country")
 
 # plot the world map
-fig = px.choropleth(merged_df, geojson=merged_df.geometry,
-                    locations=merged_df.index, color="Score", projection="natural earth", hover_name="Country")
+fig = px.choropleth(merged_df,
+                    geojson=merged_df.geometry,
+                    locations=merged_df.index,
+                    color="Score",
+                    projection="natural earth",
+                    hover_name="Country",
+                    title="Happiness score for 2019",
+                    )
 fig.show()
