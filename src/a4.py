@@ -84,29 +84,44 @@ figure, axis = plt.subplots(2, 3)
 figure.tight_layout(pad=2.0)
 X = [2015, 2016, 2017, 2018, 2019]
 
-Y1 = [average_economy_2015, average_economy_2016, average_economy_2017, average_economy_2018, average_economy_2019]
+Y1 = [average_economy_2015, average_economy_2016,
+      average_economy_2017, average_economy_2018, average_economy_2019]
 axis[0, 0].plot(X, Y1)
 axis[0, 0].set_title("Economy")
 axis[0, 0].set_ylim([0, 1])
+axis[0, 0].set_ylabel("Contribution to happines score")
+axis[0, 0].set_xlabel("Year")
 
-Y2 = [average_health_2015, average_health_2016, average_health_2017, average_health_2018, average_health_2019]
+Y2 = [average_health_2015, average_health_2016,
+      average_health_2017, average_health_2018, average_health_2019]
 axis[0, 1].plot(X, Y2)
 axis[0, 1].set_title("Health")
 axis[0, 1].set_ylim([0, 1])
+axis[0, 1].set_ylabel("Contribution to happines score")
+axis[0, 1].set_xlabel("Year")
 
-Y3 = [average_freedom_2015, average_freedom_2016, average_freedom_2017, average_freedom_2018, average_freedom_2019]
+Y3 = [average_freedom_2015, average_freedom_2016,
+      average_freedom_2017, average_freedom_2018, average_freedom_2019]
 axis[0, 2].plot(X, Y3)
 axis[0, 2].set_title("Freedom")
 axis[0, 2].set_ylim([0, 1])
+axis[0, 2].set_ylabel("Contribution to happines score")
+axis[0, 2].set_xlabel("Year")
 
-Y4 = [average_generosity_2015, average_generosity_2016, average_generosity_2017, average_generosity_2018, average_generosity_2019]
+Y4 = [average_generosity_2015, average_generosity_2016,
+      average_generosity_2017, average_generosity_2018, average_generosity_2019]
 axis[1, 0].plot(X, Y4)
 axis[1, 0].set_title("Generosity")
 axis[1, 0].set_ylim([0, 1])
+axis[1, 0].set_ylabel("Contribution to happines score")
+axis[1, 0].set_xlabel("Year")
 
-Y5 = [average_corruption_2015, average_corruption_2016, average_corruption_2017, average_corruption_2018, average_corruption_2019]
+Y5 = [average_corruption_2015, average_corruption_2016,
+      average_corruption_2017, average_corruption_2018, average_corruption_2019]
 axis[1, 1].plot(X, Y5)
 axis[1, 1].set_title("Corruption")
 axis[1, 1].set_ylim([0, 1])
+axis[1, 1].set_ylabel("Contribution to happines score")
+axis[1, 1].set_xlabel("Year")
 
 plt.show()

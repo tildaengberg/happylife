@@ -55,27 +55,40 @@ bhutan_2017 = data_2017.loc[data_2017['Country'] == 'Bhutan', 'Score'].item()
 bhutan_2016 = data_2016.loc[data_2016['Country'] == 'Bhutan', 'Score'].item()
 bhutan_2015 = data_2015.loc[data_2015['Country'] == 'Bhutan', 'Score'].item()
 
-nicaragua_2019 = data_2019.loc[data_2019['Country'] == 'Nicaragua', 'Score'].item()
-nicaragua_2018 = data_2018.loc[data_2018['Country'] == 'Nicaragua', 'Score'].item()
-nicaragua_2017 = data_2017.loc[data_2017['Country'] == 'Nicaragua', 'Score'].item()
-nicaragua_2016 = data_2016.loc[data_2016['Country'] == 'Nicaragua', 'Score'].item()
-nicaragua_2015 = data_2015.loc[data_2015['Country'] == 'Nicaragua', 'Score'].item()
+nicaragua_2019 = data_2019.loc[data_2019['Country']
+                               == 'Nicaragua', 'Score'].item()
+nicaragua_2018 = data_2018.loc[data_2018['Country']
+                               == 'Nicaragua', 'Score'].item()
+nicaragua_2017 = data_2017.loc[data_2017['Country']
+                               == 'Nicaragua', 'Score'].item()
+nicaragua_2016 = data_2016.loc[data_2016['Country']
+                               == 'Nicaragua', 'Score'].item()
+nicaragua_2015 = data_2015.loc[data_2015['Country']
+                               == 'Nicaragua', 'Score'].item()
 
 
-data1 = {'Score':[bhutan_2015,bhutan_2016,bhutan_2017,bhutan_2018,bhutan_2019], 'Year':['2015', '2016', '2017', '2018', '2019']}
+data1 = {'Score': [bhutan_2015, bhutan_2016, bhutan_2017, bhutan_2018,
+                   bhutan_2019], 'Year': ['2015', '2016', '2017', '2018', '2019']}
 data_bhutan = pd.DataFrame(data1)
 
-data2 = {'Score':[nicaragua_2015,nicaragua_2016,nicaragua_2017,nicaragua_2018,nicaragua_2019], 'Year':['2015', '2016', '2017', '2018', '2019']}
+data2 = {'Score': [nicaragua_2015, nicaragua_2016, nicaragua_2017, nicaragua_2018,
+                   nicaragua_2019], 'Year': ['2015', '2016', '2017', '2018', '2019']}
 data_nicaragua = pd.DataFrame(data2)
 
-data3 = {'Score':[data_2015['Score'].mean(),data_2016['Score'].mean(),data_2017['Score'].mean(),data_2018['Score'].mean(),data_2019['Score'].mean()], 'Year':['2015', '2016', '2017', '2018', '2019']}
+data3 = {'Score': [data_2015['Score'].mean(), data_2016['Score'].mean(), data_2017['Score'].mean(
+), data_2018['Score'].mean(), data_2019['Score'].mean()], 'Year': ['2015', '2016', '2017', '2018', '2019']}
 data_mean = pd.DataFrame(data3)
 
-plt.plot(data_bhutan['Year'], data_bhutan['Score'], label = 'Bhutan', color='#83B692')
-plt.plot(data_nicaragua['Year'], data_nicaragua['Score'], label = 'Nicaragua', color ='#F9ADA0')
-plt.plot(data_mean['Year'], data_mean['Score'], label = 'Mean', linestyle="--", color = 'grey')
+plt.plot(data_bhutan['Year'], data_bhutan['Score'],
+         label='Bhutan', color='#83B692')
+plt.plot(data_nicaragua['Year'], data_nicaragua['Score'],
+         label='Nicaragua', color='#F9ADA0')
+plt.plot(data_mean['Year'], data_mean['Score'],
+         label='Mean', linestyle="--", color='grey')
 
-plt.ylim((0,10))
+plt.ylim((0, 10))
+plt.ylabel("Happiness score")
+plt.xlabel("Year")
 plt.legend()
 plt.show()
 

@@ -49,11 +49,16 @@ data_2018 = data_2018.reindex(columns=column_titles)
 data_2019 = data_2019.reindex(columns=column_titles)
 
 # the assignment starts here
-luxembourg_2019 = data_2019.loc[data_2019['Country'] == 'Luxembourg', 'Score'].item()
-luxembourg_2018 = data_2018.loc[data_2018['Country'] == 'Luxembourg', 'Score'].item()
-luxembourg_2017 = data_2017.loc[data_2017['Country'] == 'Luxembourg', 'Score'].item()
-luxembourg_2016 = data_2016.loc[data_2016['Country'] == 'Luxembourg', 'Score'].item()
-luxembourg_2015 = data_2015.loc[data_2015['Country'] == 'Luxembourg', 'Score'].item()
+luxembourg_2019 = data_2019.loc[data_2019['Country']
+                                == 'Luxembourg', 'Score'].item()
+luxembourg_2018 = data_2018.loc[data_2018['Country']
+                                == 'Luxembourg', 'Score'].item()
+luxembourg_2017 = data_2017.loc[data_2017['Country']
+                                == 'Luxembourg', 'Score'].item()
+luxembourg_2016 = data_2016.loc[data_2016['Country']
+                                == 'Luxembourg', 'Score'].item()
+luxembourg_2015 = data_2015.loc[data_2015['Country']
+                                == 'Luxembourg', 'Score'].item()
 
 burundi_2019 = data_2019.loc[data_2019['Country'] == 'Burundi', 'Score'].item()
 burundi_2018 = data_2018.loc[data_2018['Country'] == 'Burundi', 'Score'].item()
@@ -62,26 +67,33 @@ burundi_2016 = data_2016.loc[data_2016['Country'] == 'Burundi', 'Score'].item()
 burundi_2015 = data_2015.loc[data_2015['Country'] == 'Burundi', 'Score'].item()
 
 
-data1 = {'Score':[luxembourg_2015,luxembourg_2016,luxembourg_2017,luxembourg_2018,luxembourg_2019], 'Year':['2015', '2016', '2017', '2018', '2019']}
+data1 = {'Score': [luxembourg_2015, luxembourg_2016, luxembourg_2017,
+                   luxembourg_2018, luxembourg_2019], 'Year': ['2015', '2016', '2017', '2018', '2019']}
 data_luxembourg = pd.DataFrame(data1)
 
-data2 = {'Score':[burundi_2015,burundi_2016,burundi_2017,burundi_2018,burundi_2019], 'Year':['2015', '2016', '2017', '2018', '2019']}
+data2 = {'Score': [burundi_2015, burundi_2016, burundi_2017, burundi_2018,
+                   burundi_2019], 'Year': ['2015', '2016', '2017', '2018', '2019']}
 data_burundi = pd.DataFrame(data2)
 
-data3 = {'Score':[data_2015['Score'].mean(),data_2016['Score'].mean(),data_2017['Score'].mean(),data_2018['Score'].mean(),data_2019['Score'].mean()], 'Year':['2015', '2016', '2017', '2018', '2019']}
+data3 = {'Score': [data_2015['Score'].mean(), data_2016['Score'].mean(), data_2017['Score'].mean(
+), data_2018['Score'].mean(), data_2019['Score'].mean()], 'Year': ['2015', '2016', '2017', '2018', '2019']}
 data_mean = pd.DataFrame(data3)
 
-plt.plot(data_luxembourg['Year'], data_luxembourg['Score'], label = 'Luxembourg', color = '#F9627D')
-plt.plot(data_burundi['Year'], data_burundi['Score'], label = 'Burundi', color = '#5B3758')
-plt.plot(data_mean['Year'], data_mean['Score'], label = 'Mean', linestyle="--", color = 'grey')
-plt.ylim((0,10))
+plt.plot(data_luxembourg['Year'], data_luxembourg['Score'],
+         label='Luxembourg', color='#F9627D')
+plt.plot(data_burundi['Year'], data_burundi['Score'],
+         label='Burundi', color='#5B3758')
+plt.plot(data_mean['Year'], data_mean['Score'],
+         label='Mean', linestyle="--", color='grey')
+plt.ylim((0, 10))
+plt.ylabel("Happiness score")
+plt.xlabel("Year")
 
 plt.legend()
 
-#test
+# test
 
 plt.show()
 
 
 # luxembourg is the richest country while burundi is the poorest
-
