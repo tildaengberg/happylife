@@ -29,19 +29,19 @@ data_2019.drop(["Social support"], axis=1, inplace=True)
 
 # rename column labels
 data_2015 = data_2015.rename(columns={'Happiness Rank': 'Rank', 'Happiness Score': 'Score', 'Economy (GDP per Capita)': 'Economy',
-                             'Health (Life Expectancy)': 'Health', 'Trust (Government Corruption)': 'Corruption'})
+                             'Health (Life Expectancy)': 'Health', 'Trust (Government Corruption)': 'Absence of corruption'})
 data_2016 = data_2016.rename(columns={'Happiness Rank': 'Rank', 'Happiness Score': 'Score', 'Economy (GDP per Capita)': 'Economy',
-                             'Health (Life Expectancy)': 'Health', 'Trust (Government Corruption)': 'Corruption'})
+                             'Health (Life Expectancy)': 'Health', 'Trust (Government Corruption)': 'Absence of corruption'})
 data_2017 = data_2017.rename(columns={'Happiness.Rank': 'Rank', 'Happiness.Score': 'Score', 'Economy..GDP.per.Capita.': 'Economy',
-                             'Health..Life.Expectancy.': 'Health', 'Trust..Government.Corruption.': 'Corruption'})
+                             'Health..Life.Expectancy.': 'Health', 'Trust..Government.Corruption.': 'Absence of corruption'})
 data_2018 = data_2018.rename(columns={'Overall rank': 'Rank', 'Country or region': 'Country', 'GDP per capita': 'Economy',
-                             'Healthy life expectancy': 'Health', 'Freedom to make life choices': 'Freedom', 'Perceptions of corruption':  'Corruption'})
+                             'Healthy life expectancy': 'Health', 'Freedom to make life choices': 'Freedom', 'Perceptions of corruption':  'Absence of corruption'})
 data_2019 = data_2019.rename(columns={'Overall rank': 'Rank', 'Country or region': 'Country', 'GDP per capita': 'Economy',
-                             'Healthy life expectancy': 'Health', 'Freedom to make life choices': 'Freedom', 'Perceptions of corruption': 'Corruption'})
+                             'Healthy life expectancy': 'Health', 'Freedom to make life choices': 'Freedom', 'Perceptions of corruption': 'Absence of corruption'})
 
 # sort columns
 column_titles = ["Country", "Rank", "Score", "Economy",
-                 "Health", "Freedom", "Generosity", "Corruption"]
+                 "Health", "Freedom", "Generosity", "Absence of corruption"]
 data_2015 = data_2015.reindex(columns=column_titles)
 data_2016 = data_2016.reindex(columns=column_titles)
 data_2017 = data_2017.reindex(columns=column_titles)
@@ -150,10 +150,10 @@ data_burundi = pd.DataFrame(data4)
 
 
 plt.plot(data_switzerland['Year'],
-         data_switzerland['Score'], label='Switzerland')
-plt.plot(data_benin['Year'], data_benin['Score'], label='Benin')
-plt.plot(data_togo['Year'], data_togo['Score'], label='Togo')
-plt.plot(data_burundi['Year'], data_burundi['Score'], label='Burundi')
+         data_switzerland['Score'], label='Switzerland', color = '#F9ADA0')
+plt.plot(data_benin['Year'], data_benin['Score'], label='Benin', color = '#F9627D')
+plt.plot(data_togo['Year'], data_togo['Score'], label='Togo', color = '#C65B7C')
+plt.plot(data_burundi['Year'], data_burundi['Score'], label='Burundi', color = '#5B3758')
 plt.ylabel("GDP per capita")
 plt.xlabel("Year")
 

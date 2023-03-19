@@ -55,42 +55,55 @@ freedom_mean_2019 = data_2019["Freedom"].mean()
 generosity_mean_2019 = data_2019["Generosity"].mean()
 corruption_mean_2019 = data_2019["Absence of corruption"].mean()
 
-names = ['Economy', 'Health', 'Freedom', 'Generosity', 'Absence of corruption']
-values = [economy_mean_2019, health_mean_2019, freedom_mean_2019,
-          generosity_mean_2019, corruption_mean_2019]
+# plot bar graph
+economy_mean_2018 = data_2018["Economy"].mean()
+health_mean_2018 = data_2018["Health"].mean()
+freedom_mean_2018 = data_2018["Freedom"].mean()
+generosity_mean_2018 = data_2018["Generosity"].mean()
+corruption_mean_2018 = data_2018["Absence of corruption"].mean()
 
-fig1, ax1 = plt.subplots()
-barlist = ax1.bar(names, values)
-barlist[0].set_color('#83B692')
-barlist[1].set_color('#F9ADA0')
-barlist[2].set_color('#F9627D')
-barlist[3].set_color('#C65B7C')
-barlist[4].set_color('#5B3758')
-ax1.set_ylabel('Contribution to happiness')
-ax1.set_xlabel('Factors')
-ax1.set_title("Happiness bar plot plot 2019")
+# plot bar graph
+economy_mean_2017 = data_2017["Economy"].mean()
+health_mean_2017 = data_2017["Health"].mean()
+freedom_mean_2017 = data_2017["Freedom"].mean()
+generosity_mean_2017 = data_2017["Generosity"].mean()
+corruption_mean_2017 = data_2017["Absence of corruption"].mean()
 
-print(data_2019["Score"].head)
+# plot bar graph
+economy_mean_2016 = data_2016["Economy"].mean()
+health_mean_2016 = data_2016["Health"].mean()
+freedom_mean_2016 = data_2016["Freedom"].mean()
+generosity_mean_2016 = data_2016["Generosity"].mean()
+corruption_mean_2016 = data_2016["Absence of corruption"].mean()
 
-# Scatter plot
-fig2, ax2 = plt.subplots()
+# plot bar graph
+economy_mean_2015 = data_2015["Economy"].mean()
+health_mean_2015 = data_2015["Health"].mean()
+freedom_mean_2015 = data_2015["Freedom"].mean()
+generosity_mean_2015 = data_2015["Generosity"].mean()
+corruption_mean_2015 = data_2015["Absence of corruption"].mean()
 
-economy_plot = ax2.scatter(
-    data_2019["Economy"], data_2019["Score"], c='#83B692')
-health_plot = ax2.scatter(
-    data_2019["Health"], data_2019["Score"], c='#F9ADA0')
-freedom_plot = ax2.scatter(
-    data_2019["Freedom"], data_2019["Score"], c='#F9627D')
-generosity_plot = ax2.scatter(
-    data_2019["Generosity"], data_2019["Score"], c='#C65B7C')
-corruption_plot = ax2.scatter(
-    data_2019["Absence of corruption"], data_2019["Score"], c='#5B3758')
+# assignment starts here
+economy_tot = [economy_mean_2015, economy_mean_2016, economy_mean_2017, economy_mean_2018, economy_mean_2019]
+health_tot = [health_mean_2015, health_mean_2016, health_mean_2017, health_mean_2018, health_mean_2019]
+freedom_tot = [freedom_mean_2015, freedom_mean_2016, freedom_mean_2017, freedom_mean_2018, freedom_mean_2019]
+generosity_tot = [generosity_mean_2015, generosity_mean_2016, generosity_mean_2017, generosity_mean_2018, generosity_mean_2019]
+corruption_tot = [corruption_mean_2015, corruption_mean_2016, corruption_mean_2017, corruption_mean_2018, corruption_mean_2019]
+  
+N = 5
+ind = np.arange(N) 
+width = 0.15
 
-ax2.set_xlabel(
-    "The extent to which the factor contributes to the happines score")
-ax2.set_ylabel("Happiness score")
-ax2.legend((economy_plot, health_plot, freedom_plot, generosity_plot,
-           corruption_plot), ('Economy', 'Health', 'Freedom', 'Generosity', 'Absence of corruption'))
-ax2.set_title("Happiness scatter plot 2019")
-
+bar1 = plt.bar(ind, economy_tot, width, color = '#83B692')
+bar2 = plt.bar(ind+width, health_tot, width, color = '#F9ADA0')
+bar3 = plt.bar(ind+width*2, freedom_tot, width, color = '#F9627D')
+bar4 = plt.bar(ind+width*3, generosity_tot, width, color = '#C65B7C')
+bar5 = plt.bar(ind+width*4, corruption_tot, width, color = '#5B3758')
+  
+plt.xlabel("Year")
+plt.ylabel('Contribution to happiness')
+plt.title("The factors impact over time")
+  
+plt.xticks(ind+width,['2015','2016','2017','2018', '2019'])
+plt.legend( (bar1, bar2, bar3, bar4, bar5), ('Economy', 'Health', 'Freedom', 'Generosity', 'Absence of corruption') )
 plt.show()
